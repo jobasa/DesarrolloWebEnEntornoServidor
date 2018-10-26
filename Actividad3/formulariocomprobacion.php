@@ -14,12 +14,25 @@
       echo "Texto Largo: ".$TEXTOLARGO."<br>";
       echo "Palabra a destacar: ".$DESTACAR."<br>";
 
-      //$arr = array("blue","red","green","yellow");
-        //print_r(str_replace("red","pink",$arr,$i));
+      //Remplazar signos por espacios
+      $signos = array(",",".",";","!","¡","?","¿");
+      $remplazarPorEspacios = str_replace($signos," ", $DESTACAR);
 
+      //Substituir con espacios
+      $conEspacios = explode(" ", $remplazarPorEspacios);
 
+      //Poner en negrita
+      function negrita($negrita){
+        return "<b>".$negrita."</b>";
+      }
 
+      $textoNegrita = array_map("negrita", $conEspacios);
 
+      //Texto en negrita
+      $texto = str_replace($conEspacios,$textoNegrita, $TEXTOLARGO);
+
+      //Resultado
+      echo "Texto final: ".$texto;
 
      ?>
   </body>
