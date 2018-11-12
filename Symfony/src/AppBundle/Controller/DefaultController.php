@@ -21,42 +21,42 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/", name="registro")
+     * @Route("/registro", name="registro")
      */
     public function registroAction(Request $request){
       return $this->render('frontal/registro.html.twig');
     }
 
     /**
-     * @Route("/", name="login")
+     * @Route("/login", name="login")
      */
      public function loginAction(Request $request){
        return $this->render('frontal/login.html.twig');
      }
 
      /**
-      * @Route("/", name="crearEventos")
+      * @Route("/crearEventos", name="crearEventos")
       */
       public function crearEventosAction(Request $request){
         return $this->render('frontal/crearEventos.html.twig');
       }
 
       /**
-       * @Route("/", name="eventos")
+       * @Route("/eventos", name="eventos")
        */
        public function eventosAction(Request $request){
          return $this->render('frontal/eventos.html.twig');
        }
 
        /**
-        * @Route("/", name="admin")
+        * @Route("/admin", name="admin")
         */
         public function adminAction(Request $request){
           return $this->render('frontal/admin.html.twig');
         }
 
         /**
-         * @Route("/", name="cuenta")
+         * @Route("/cuenta", name="cuenta")
          */
          public function cuentaAction(Request $request){
            return $this->render('frontal/cuenta.html.twig');
