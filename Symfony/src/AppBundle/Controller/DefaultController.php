@@ -62,4 +62,11 @@ class DefaultController extends Controller
            return $this->render('frontal/cuenta.html.twig');
          }
 
+         /**
+          * @Route("/nosotros", name="nosotros")
+          */
+          public function nosotrosAction(Request $request){
+            return $this->render('frontal/nosotros.html.twig');
+          }
+
 }
