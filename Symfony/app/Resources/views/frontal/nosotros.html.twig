@@ -3,10 +3,20 @@
 
 {# Titulo de nuestra aplicacion #}
 {% block title %}
-Pagina nosotros!
+Nosotros!
 {% endblock %}
 
 {# Contenido de nuestra aplicacion #}
 {% block body %}
-Pagina de nosotros de nuestra aplicacion
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Page Heading/Breadcrumbs -->
+  <h1 class="mt-4 mb-3">RoundRock
+    <small>Equipo</small>
+  </h1>
+
+  <!-- Image Header -->
+<img class="img-fluid rounded mb-4" src="{{ asset('img/nosotros.jpg') }}" alt="">
+</div>
 {% endblock %}
