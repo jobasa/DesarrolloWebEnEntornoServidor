@@ -35,17 +35,17 @@ class DefaultController extends Controller
      }
 
      /**
-      * @Route("/crearEventos", name="crearEventos")
+      * @Route("/crearFestival", name="crearFestival")
       */
-      public function crearEventosAction(Request $request){
-        return $this->render('frontal/crearEventos.html.twig');
+      public function crearFestivalAction(Request $request){
+        return $this->render('frontal/crearFestival.html.twig');
       }
 
       /**
-       * @Route("/eventos", name="eventos")
+       * @Route("/festivales", name="festivales")
        */
-       public function eventosAction(Request $request){
-         return $this->render('frontal/eventos.html.twig');
+       public function festivalesAction(Request $request){
+         return $this->render('frontal/festivales.html.twig');
        }
 
        /**
@@ -68,5 +68,12 @@ class DefaultController extends Controller
           public function nosotrosAction(Request $request){
             return $this->render('frontal/nosotros.html.twig');
           }
+
+          /**
+           * @Route("/contactar/{sitio}", name="contactar")
+           */
+           public function contactarAction(Request $request,$sitio="todos"){
+             return $this->render('frontal/festivales.html.twig');
+           }
 
 }
