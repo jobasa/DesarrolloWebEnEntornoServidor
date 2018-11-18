@@ -49,6 +49,13 @@ class DefaultController extends Controller
        }
 
        /**
+        * @Route("/conciertos", name="conciertos")
+        */
+        public function conciertosAction(Request $request){
+          return $this->render('frontal/conciertos.html.twig');
+        }
+
+       /**
         * @Route("/admin", name="admin")
         */
         public function adminAction(Request $request){
