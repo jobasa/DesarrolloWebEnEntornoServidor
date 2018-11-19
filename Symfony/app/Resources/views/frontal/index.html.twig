@@ -8,5 +8,44 @@ Round Rock
 
 {# Contenido de nuestra aplicacion #}
 {% block body %}
-Pagina principal de nuestra aplicacion
+<header>
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <!-- Slide One - Set the background image for this slide in the line below -->
+      <div class="carousel-item active" style="background-image: url({{ asset('img/concierto.jpg') }})">
+        <div class="carousel-caption d-none d-md-block">
+          <h3>Round Rock</h3>
+          <p>Donde puedes encontrar los mejores conciertos y festivales a los que podrás asistir.</p>
+        </div>
+      </div>
+      <!-- Slide Two - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url({{ asset('img/festival.jpg') }})">
+        <div class="carousel-caption d-none d-md-block">
+          <h3>Festivales</h3>
+          <p>Los mejores festivales que puedes encontrar.</p>
+        </div>
+      </div>
+      <!-- Slide Three - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url({{ asset('img/concierto2.jpg') }})">
+        <div class="carousel-caption d-none d-md-block">
+          <h3>Conciertos</h3>
+          <p>Todos los conciertos de tu gusto que puedes encontrar.</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</header>
 {% endblock %}

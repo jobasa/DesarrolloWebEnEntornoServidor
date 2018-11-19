@@ -8,5 +8,41 @@ Pagina conciertos!
 
 {# Contenido de nuestra aplicacion #}
 {% block body %}
-Pagina de conciertos de nuestra aplicacion
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">RoundRock
+      <small>Conciertos</small>
+    </h1>
+
+
+    <!-- Content Row -->
+        <div class="row">
+          <!-- Map Column -->
+          <div class="col-lg-8 mb-4">
+            <!-- Embedded Google Map -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3080.135117987773!2d-0.3623166843136679!3d39.46627612081459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6048bed144b5b7%3A0xfb7f0483ccf3457c!2sPalau+de+la+M%C3%BAsica+de+Val%C3%A8ncia!5e0!3m2!1ses!2ses!4v1542628515669" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+          </div>
+          <!-- Contact Details Column -->
+          <div class="col-lg-4 mb-4">
+            <h3>Detalles</h3>
+            <p>
+              Candela Roots
+              <br>Palau de la música i congresos de Valéncia(SALA RODRIGO).
+              <br>
+            </p>
+            <p>
+              <abbr title="paginaWeb">Pagina Web</abbr>: https://candelaroots.org/
+            </p>
+            <p>
+              <abbr title="Precio">Precio</abbr>: 10€.
+            </p>
+            <p>
+              <abbr title="Horario">Fecha de celebración</abbr>: 24 Noviembre 2018 a las 21:00h.
+            </p>
+          </div>
+        </div>
+        <!-- /.row -->
+</div>
 {% endblock %}

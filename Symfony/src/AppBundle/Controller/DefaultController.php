@@ -49,9 +49,9 @@ class DefaultController extends Controller
        }
 
        /**
-        * @Route("/conciertos", name="conciertos")
+        * @Route("/conciertos/{sitio}", name="conciertos")
         */
-        public function conciertosAction(Request $request){
+        public function conciertosAction(Request $request,$sitio="todos"){
           return $this->render('frontal/conciertos.html.twig');
         }
 
@@ -77,9 +77,9 @@ class DefaultController extends Controller
           }
 
           /**
-           * @Route("/contactar/{sitio}", name="contactar")
+           * @Route("/contactar", name="contactar")
            */
-           public function contactarAction(Request $request,$sitio="todos"){
+           public function contactarAction(Request $request){
              return $this->render('frontal/festivales.html.twig');
            }
 
