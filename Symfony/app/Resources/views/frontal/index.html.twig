@@ -48,4 +48,28 @@ Round Rock
     </a>
   </div>
 </header>
+
+<!-- Page Content -->
+<div class="container">
+  <!-- Portfolio Section -->
+<h1 class="my-4">Los mejores festivales</h1>
+
+<div class="row">
+  {% for festival in festivales %}
+  <div class="col-lg-4 col-sm-6 portfolio-item">
+    <div class="card h-100">
+      <a href="{{path('festival',{'id':festival.id})}}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+      <div class="card-body">
+        <h4 class="card-title">
+          <a href="{{path('festival',{'id':festival.id})}}">{{festival.nombre}}</a>
+        </h4>
+        <p class="card-text">{{festival.descripcion}}</p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+</div>
+<!-- /.row -->
+</div>
 {% endblock %}

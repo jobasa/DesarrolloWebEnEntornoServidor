@@ -5,7 +5,7 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-//use Symfony\Component\HttpFoundation\Response;
+use AppBundle\Entity\Festival;
 
 class DefaultController extends Controller
 {
@@ -14,10 +14,11 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        //Capturar el repositorio de la Tabla contra la DB
+        $festivalRepository = $this->getDoctrine()->getRepository(Festival::class);
+        $festivales = $festivalRepository->findByTop(1);
         // replace this example code with whatever you need
-        return $this->render('frontal/index.html.twig');//, [
-            //'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        //]);
+        return $this->render('frontal/index.html.twig',array('festivales'=>$festivales));
     }
 
     /**
@@ -82,5 +83,23 @@ class DefaultController extends Controller
            public function contactarAction(Request $request){
              return $this->render('frontal/festivales.html.twig');
            }
+
+           /**
+            * @Route("/festival/{id}", name="festival")
+            */
+            public function festivalAction(Request $request,$id=null){
+
+              if ($id!=null) {
+                //Capturar el repositorio de la Tabla contra la DB
+                $festivalRepository = $this->getDoctrine()->getRepository(Festival::class);
+                $festival = $festivalRepository->find($id);
+                return $this->render('frontal/festival.html.twig',array('festival'=>$festival));
+              }else{
+                return $this->redirectToRoute('homepage');
+              }
+
+            }
+
+
 
 }
