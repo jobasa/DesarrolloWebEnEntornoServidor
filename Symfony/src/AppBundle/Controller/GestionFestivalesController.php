@@ -17,11 +17,17 @@ class GestionFestivalesController extends Controller
    */
   public function nuevoFestivalAction(Request $request)
   {
-      //Capturar el repositorio de la Tabla contra la DB
-      $festivalRepository = $this->getDoctrine()->getRepository(Festival::class);
-      $festivales = $festivalRepository->findAll();
+      //generamos el festival
+      $festival = new Festival();
+
+      //constructor de formularios
+       $formBuilder = $this->createFormBuilder($festival);
+
+       //Recojemos formulario
+       $form = $formBuilder->getForm();
+
       // replace this example code with whatever you need
-      return $this->render('frontal/index.html.twig',array('festivales'=>$festivales));
+      return $this->render('gestionFestivales/nuevoFestival.html.twig',array('form' => $form->createView()));
   }
 
 
