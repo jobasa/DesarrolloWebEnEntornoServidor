@@ -30,9 +30,7 @@ class GestionFestivalesController extends Controller
       if ($form->isSubmitted() && $form->isValid()) {
         //Rellenar el Entity Festival
         $festival = $form->getData();
-        $festival->setDatos("");
         $festival->setFoto("");
-        $festival->setTop(0);
 
         //Almacenar nuevo festival
         $em = $this->getDoctrine()->getManager();

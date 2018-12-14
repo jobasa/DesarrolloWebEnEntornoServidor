@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
 class FestivalType extends AbstractType
 {
@@ -15,8 +16,10 @@ class FestivalType extends AbstractType
     {
         $builder
           ->add('nombre', TextType::class)
-          ->add('descripcion', TextareaType::class)
+          ->add('descripcion', CKEditorType::class)
+          ->add('datos', TextareaType::class)
           ->add('fecha', DateType::class)
+          ->add('top')
           ->add('salvar', SubmitType::class, array('label' => 'Nuevo Festival'))
         ;
     }
