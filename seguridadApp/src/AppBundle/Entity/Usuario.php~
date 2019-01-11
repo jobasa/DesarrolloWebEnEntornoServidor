@@ -39,7 +39,7 @@ class Usuario implements UserInterface
     /**
      * @var array
      *
-     * @ORM\Column(name="roles", type="json_array")
+     * @ORM\Column(name="roles", type="array")
      */
     private $roles;
 
@@ -130,15 +130,6 @@ class Usuario implements UserInterface
     public function getRoles()
     {
         return $this->roles;
-    }
-    public function getPlainPassword()
-    {
-        return $this->plainPassword;
-    }
-
-    public function setPlainPassword($password)
-    {
-        $this->plainPassword = $password;
     }
     public function getSalt()
     {

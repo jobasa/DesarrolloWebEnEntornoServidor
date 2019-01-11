@@ -9,6 +9,7 @@ use AppBundle\Entity\Usuario;
 use AppBundle\Form\UsuarioType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+
 class DefaultController extends Controller
 {
     /**
@@ -47,12 +48,12 @@ class DefaultController extends Controller
           // ... do any other work - like sending them an email, etc
           // maybe set a "flash" success message for the user
 
-          return $this->redirectToRoute('homepage');
+          return $this->redirectToRoute('usuarios');
       }
 
       return $this->render(
           'seguridad/registro.html.twig',
           array('form' => $form->createView())
       );
-  }
+    }
 }

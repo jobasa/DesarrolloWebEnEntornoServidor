@@ -19,15 +19,15 @@ class UsuarioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('username', TextType::class)
-        ->add('plainPassword', RepeatedType::class, array(
-            'type' => PasswordType::class,
-            'first_options'  => array('label' => 'Password'),
-            'second_options' => array('label' => 'Repeat Password'),
+          ->add('username', TextType::class)
+          ->add('plainPassword', RepeatedType::class, array(
+          'type' => PasswordType::class,
+          'first_options'  => array('label' => 'Contraseña'),
+          'second_options' => array('label' => 'Repite Contraseña'),
         ))
-        ->add('Salvar', SubmitType::class)
-        ->add('Borrar', ResetType::class)
-    ;
+          ->add('Salvar',SubmitType::class)
+          ->add('Borrar',ResetType::class)
+      ;
     }/**
      * {@inheritdoc}
      */
