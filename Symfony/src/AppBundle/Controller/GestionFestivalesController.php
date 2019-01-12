@@ -59,7 +59,4 @@ class GestionFestivalesController extends Controller
         // uniqid(), which is based on timestamps
         return md5(uniqid());
     }
-
-
-
 }
