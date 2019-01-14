@@ -222,28 +222,4 @@ class Festival
     {
         return $this->top;
     }
-
-    /**
-     * Set estilo
-     *
-     * @param \AppBundle\Entity\Estilo $estilo
-     *
-     * @return Festival
-     */
-    public function setEstilo(\AppBundle\Entity\Estilo $estilo = null)
-    {
-        $this->estilo = $estilo;
-
-        return $this;
-    }
-
-    /**
-     * Get estilo
-     *
-     * @return \AppBundle\Entity\Estilo
-     */
-    public function getEstilo()
-    {
-        return $this->estilo;
-    }
 }
