@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Form\FestivalType;
 use AppBundle\Entity\Festival;
+use AppBundle\Entity\Estilo;
+use AppBundle\Form\EstiloType;
 
 
 /**
@@ -49,6 +51,43 @@ class GestionFestivalesController extends Controller
       // replace this example code with whatever you need
       return $this->render('gestionFestivales/nuevoFestival.html.twig',array('form' => $form->createView()));
   }
+
+  /**
+   * @Route("/nuevoEstilo", name="nuevoEstilo")
+   */
+  public function nuevoEstiloAction(Request $request)
+  {
+    //generamos el estilo
+    $estilo = new Estilo();
+
+    //construyendo el formulario
+    $form = $this->createForm(EstiloType::class, $estilo);
+
+    //Recogemos la informacion
+    $form->handleRequest($request);
+    if ($form->isSubmitted() && $form->isValid()) {
+      //Rellenar el Entity Estilo
+      $estilo = $form->getData();
+      $fotoFile = $estilo->getFoto();
+      $fileName = $this->generateUniqueFileName().'.'.$fotoFile->guessExtension();
+      // Move the file to the directory where brochures are stored
+      $fotoFile->move(
+          $this->getParameter('festivalImg_directory'),
+          $fileName
+      );
+      $estilo->setFoto($fileName);
+
+      //Almacenar nuevo estilo
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($estilo);
+      $em->flush();
+      return $this->redirectToRoute('estilo',array('id' => $estilo->getId()));
+    }
+
+    // replace this example code with whatever you need
+    return $this->render('gestionFestivales/nuevoEstilo.html.twig',array('form' => $form->createView()));
+}
+
 
      /**
      * @return string

@@ -1,0 +1,33 @@
+{# Plantilla de nuestra aplicacion #}
+{% extends 'base.html.twig' %}
+
+{# Titulo de nuestra aplicacion #}
+{% block title %}
+Festival!
+{% endblock %}
+
+{# Contenido de nuestra aplicacion #}
+{% block body %}
+<!-- Page Content -->
+  <div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Estilo</h1>
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+      <div class="col-md-8">
+        <img class="img-fluid" src="{{asset(festivalImg ~ estilo.foto)}}" alt="">
+      </div>
+
+      <div class="col-md-4">
+        <h3 class="my-3">{{estilo.nombre}}</h3>
+        <p>{{estilo.descripcion}}</p>
+      </div>
+
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container -->
+{% endblock %}

@@ -100,6 +100,22 @@ class DefaultController extends Controller
 
             }
 
+            /**
+             * @Route("/estilo/{id}", name="estilo")
+             */
+             public function estiloAction(Request $request,$id=null){
+
+               if ($id!=null) {
+                 //Capturar el repositorio de la Tabla contra la DB
+                 $estiloRepository = $this->getDoctrine()->getRepository(Estilo::class);
+                 $estilo = $festivalRepository->find($id);
+                 return $this->render('frontal/estilo.html.twig',array('estilo'=>$estilo));
+               }else{
+                 return $this->redirectToRoute('homepage');
+               }
+
+             }
+
 
 
 }
