@@ -16,7 +16,13 @@ class DefaultController extends Controller
     {
         //Capturar el repositorio de la Tabla contra la DB
         $festivalRepository = $this->getDoctrine()->getRepository(Festival::class);
-        $festivales = $festivalRepository->findByTop(1);
+        //$festivales = $festivalRepository->findByTop(1);
+        $query = $festivalRepository->createQueryBuilder('t')
+          ->where('t.top = 1')
+          ->setFirstResult(0)
+          ->setMaxResults(3)
+          ->getQuery();
+          $festivales = $query->getResult();
         // replace this example code with whatever you need
         return $this->render('frontal/index.html.twig',array('festivales'=>$festivales));
     }
