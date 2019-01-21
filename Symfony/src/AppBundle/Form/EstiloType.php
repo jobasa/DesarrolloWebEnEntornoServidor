@@ -11,7 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
-class CategoriaType extends AbstractType
+class EstiloType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

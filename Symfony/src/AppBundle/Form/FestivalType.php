@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
@@ -19,6 +20,7 @@ class FestivalType extends AbstractType
           ->add('nombre', TextType::class)
           ->add('descripcion', CKEditorType::class)
           ->add('datos', TextareaType::class)
+          ->add('estilo', EntityType::class, array ('class' => 'AppBundle:Estilo'))
           ->add('fecha', DateType::class)
           ->add('foto', FileType::class,array('attr'=>array('onchange'=>'onChange(event)')))
           ->add('top')

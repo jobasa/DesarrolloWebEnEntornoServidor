@@ -169,4 +169,10 @@ class Estilo
     {
         return $this->festivales;
     }
+
+    //Conversion a cadena
+    public function __toString()
+    {
+        return $this->nombre;
+    }
 }
