@@ -10,4 +10,14 @@ namespace AppBundle\Repository;
  */
 class FestivalRepository extends \Doctrine\ORM\EntityRepository
 {
+  //Funcion que devuelve los festivales para una pagina con un numero de elemntos
+  public function paginaFestivales($pagina=1,$numFestivales=3)
+  {
+    $query = $this->createQueryBuilder('t')
+      ->where('t.top = 1')
+      ->setFirstResult($numFestivales*($pagina-1))
+      ->setMaxResults($numFestivales)
+      ->getQuery();
+      return $query->getResult();;
+  }
 }

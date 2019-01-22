@@ -14,16 +14,9 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request, $pagina=1)
     {
-        $numFestivales=3;
         //Capturar el repositorio de la Tabla contra la DB
         $festivalRepository = $this->getDoctrine()->getRepository(Festival::class);
-        //$festivales = $festivalRepository->findByTop(1);
-        $query = $festivalRepository->createQueryBuilder('t')
-          ->where('t.top = 1')
-          ->setFirstResult($numFestivales*($pagina-1))
-          ->setMaxResults($numFestivales)
-          ->getQuery();
-          $festivales = $query->getResult();
+        $festivales = $festivalRepository->paginaFestivales($pagina);
         // replace this example code with whatever you need
         return $this->render('frontal/index.html.twig',array('festivales'=>$festivales,'paginaActual'=>$pagina));
     }
