@@ -10,21 +10,22 @@ use AppBundle\Entity\Festival;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/{pagina}", name="homepage")
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, $pagina=1)
     {
+        $numFestivales=3;
         //Capturar el repositorio de la Tabla contra la DB
         $festivalRepository = $this->getDoctrine()->getRepository(Festival::class);
         //$festivales = $festivalRepository->findByTop(1);
         $query = $festivalRepository->createQueryBuilder('t')
           ->where('t.top = 1')
-          ->setFirstResult(0)
-          ->setMaxResults(3)
+          ->setFirstResult($numFestivales*($pagina-1))
+          ->setMaxResults($numFestivales)
           ->getQuery();
           $festivales = $query->getResult();
         // replace this example code with whatever you need
-        return $this->render('frontal/index.html.twig',array('festivales'=>$festivales));
+        return $this->render('frontal/index.html.twig',array('festivales'=>$festivales,'paginaActual'=>$pagina));
     }
 
     /**
