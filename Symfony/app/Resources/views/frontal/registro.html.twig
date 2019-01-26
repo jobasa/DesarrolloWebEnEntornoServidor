@@ -1,12 +1,34 @@
 {# Plantilla de nuestra aplicacion #}
 {% extends 'base.html.twig' %}
+{% form_theme form 'form/festivalForm.html.twig' %}
 
 {# Titulo de nuestra aplicacion #}
 {% block title %}
-Pagina registro!
+Pagina registro usuario!
 {% endblock %}
 
 {# Contenido de nuestra aplicacion #}
 {% block body %}
-Pagina de registro de nuestra aplicacion
+    <div class="container">
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">Round Rock
+        <small>Registro de usuario</small>
+      </h1>
+
+      <!-- Intro Content -->
+      <div class="row">
+        <div class="col-lg-6">
+          {{ form_start(form) }}
+          {{ form_widget(form) }}
+          {{ form_end(form) }}
+        </div>
+        <div class="col-lg-6">
+          <h2>¿Para qué registrarse?</h2>
+            <p>Con el registro del usuario se podrá realizar la compra de entradas y merchandising de una forma rápida y sencilla.</p>
+            <p>Mediante la introducción del correo electrónico y la contraseña, podréis comparar entradas/merchandising o anular las compras realizadas devolviendose el dinero gastado.</p>
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+
 {% endblock %}

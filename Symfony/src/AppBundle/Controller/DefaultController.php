@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Entity\Festival;
 use AppBundle\Entity\Estilo;
+use AppBundle\Entity\Usuario;
+use AppBundle\Form\UsuarioType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class DefaultController extends Controller
@@ -22,20 +24,6 @@ class DefaultController extends Controller
         // replace this example code with whatever you need
         return $this->render('frontal/index.html.twig',array('festivales'=>$festivales,'paginaActual'=>$pagina));
     }
-
-    /**
-     * @Route("/registro", name="registro")
-     */
-    public function registroAction(Request $request){
-      return $this->render('frontal/registro.html.twig');
-    }
-
-    /**
-     * @Route("/login", name="login")
-     */
-     public function loginAction(Request $request){
-       return $this->render('frontal/login.html.twig');
-     }
 
      /**
       * @Route("/crearFestival", name="crearFestival")
@@ -73,7 +61,7 @@ class DefaultController extends Controller
          }
 
          /**
-          * @Route("/nosotros", name="nosotros")
+          * @Route("/nosotros/", name="nosotros")
           */
           public function nosotrosAction(Request $request){
             return $this->render('frontal/nosotros.html.twig');
@@ -119,7 +107,7 @@ class DefaultController extends Controller
              }
 
              /**
-              * @Route("/registro", name="registro")
+              * @Route("/registro/", name="registro")
               */
              public function registroAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
              {
@@ -143,11 +131,21 @@ class DefaultController extends Controller
                    $entityManager = $this->getDoctrine()->getManager();
                    $entityManager->persist($usuario);
                    $entityManager->flush();
-                   return $this->redirectToRoute('festival',array('id' => $festival->getId()));
+
+                   return $this->redirectToRoute('login');
                  }
 
                  // replace this example code with whatever you need
-                 return $this->render('gestionFestivales/nuevoFestival.html.twig',array('form' => $form->createView()));
+                 return $this->render('frontal/registro.html.twig',array('form' => $form->createView()));
+             }
+
+             /**
+              * @Route("/login/", name="login")
+              */
+             public function loginAction(Request $request)
+             {
+               return $this->render('frontal/login.html.twig');
+
              }
 
 
