@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Entity\Festival;
+use AppBundle\Entity\Estilo;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class DefaultController extends Controller
 {
@@ -114,6 +116,38 @@ class DefaultController extends Controller
                  return $this->redirectToRoute('homepage');
                }
 
+             }
+
+             /**
+              * @Route("/registro", name="registro")
+              */
+             public function registroAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+             {
+                 //generamos el usuario
+                 $usuario = new Usuario();
+
+                 //construyendo el formulario
+                 $form = $this->createForm(UsuarioType::class, $usuario);
+
+                 //Recogemos la informacion
+                 $form->handleRequest($request);
+                 if ($form->isSubmitted() && $form->isValid()) {
+                   // 3) Encode the password (you could also do this via Doctrine listener)
+                   $password = $passwordEncoder->encodePassword($usuario, $usuario->getPlainPassword());
+                   $usuario->setPassword($password);
+
+                   // 3b) $username=$email
+                   $usuario->setUsername($usuario->getEmail());
+
+                   // 4) save the User!
+                   $entityManager = $this->getDoctrine()->getManager();
+                   $entityManager->persist($usuario);
+                   $entityManager->flush();
+                   return $this->redirectToRoute('festival',array('id' => $festival->getId()));
+                 }
+
+                 // replace this example code with whatever you need
+                 return $this->render('gestionFestivales/nuevoFestival.html.twig',array('form' => $form->createView()));
              }
 
 
